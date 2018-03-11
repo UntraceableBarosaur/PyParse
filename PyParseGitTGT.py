@@ -27,17 +27,22 @@ branch   =   "UntraceableBarosaur/PyParse.git"
 # Do a git pull on startup
 gitPull(branch,pullPath)
 
+# Define the gitUpdate function
 def gitUpdate(*args):
+    # Attempt a gitPull
     try:
         gitPull(branch,pullPath)
+        # If it fails
     except RuntimeError:
+        # Give a failure message
         returnTerm.set("An error occured during the git pull")
+        # If it succeeds give a confirmation message
     returnTerm.set("The git pull has been successful")
 
 """~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"""
 #    CSV SEARCHING FUNCTION:
 
-#Define our CSV search function
+# Define our CSV search function
 def searchCSV(*args):
 
     # Formats our output string variable to pool text results
