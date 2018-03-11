@@ -1,40 +1,35 @@
 import os
 import sys
 
-
-username   =  "UntraceableBarosaur"
-password   =   str(input("Input password UntraceableBarosaur"))
-
-
 branch      =   "UntraceableBarosaur/PyParse.git"
 changedFilePath  = "gitTerm.py"
 
-clone       =   "git clone https://github.com/"+branch
+clone       =   "git clone https://github.com/"
 clonePath   =   "/Users/Owen/Desktop"
 
-pushpullPath     =   "/Users/Owen/Desktop/PyParse"
-pull        =   "git pull https://github.com/"+branch
+pushpullPath  =   "/Users/Owen/Desktop/PyParse"
+pull        =   "git pull https://github.com/"
 add         =   "git add ."
-commit      =   "git commit -m" + changedFilePath
-push        =   "git push --all https://github.com/"+branch
+commit      =   "git commit -am" + changedFilePath
+push        =   "git push --all https://github.com/"
 
-def gitPull():
+def gitPull(branch,pushpullPath):
     os.chdir(pushpullPath) # Specifying the path where the cloned project has to be copied
     try:
-        os.system(pull) # Pulling
+        os.system(pull+branch) # Pulling
     except RuntimeError:
         print("Pulling Failed")
     print("Pulling Successful")
 
-def gitClone():
+def gitClone(branch,clonePath):
     os.chdir(clonePath) # Specifying the path where the cloned project has to be copied
     try:
-        os.system(clone) # Cloning
+        os.system(clone+branch) # Cloning
     except RuntimeError:
         print("Cloning Failed")
     print("Cloning Successful")
 
-def gitPush():
+def gitPush(branch,pushpullPath):
     os.chdir(pushpullPath) # Specifying the path where the cloned project has to be copied
     try:
         os.system(add) # Adding
@@ -45,10 +40,7 @@ def gitPush():
     except RuntimeError:
         print("Commiting Failed")
     try:
-        os.system(push) # Pushing
+        os.system(push+branch) # Pushing
     except RuntimeError:
         print("Pushing Failed")
     print("Pushing Successful")
-
-
-gitPush()
